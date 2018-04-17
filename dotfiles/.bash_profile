@@ -12,11 +12,35 @@ unset file;
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
+# don't put duplicate lineso r lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in 
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # we have color support; assume it's complienat with Ecma-48
+    # (ISO/IEC-6429). (Lack of support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+else
+    color_prompt=
+fi
 
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`

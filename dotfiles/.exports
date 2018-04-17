@@ -4,8 +4,10 @@
 export EDITOR='vim';
 
 # Prefer US English and use UTF-8.
-export LANG='en_US.UTF-8';
-export LC_ALL='en_US.UTF-8';
+if ([ -n "$LANG" ]) && ([ -n "$LC_ALL" ]); then
+    export LANG='en_US.UTF-8';
+    export LC_ALL='en_US.UTF-8';
+fi
 
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md="${yellow}";
