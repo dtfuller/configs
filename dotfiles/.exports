@@ -13,6 +13,8 @@ fi
 export LESS_TERMCAP_md="${yellow}";
 
 export CLICOLOR=1
-export PATH=~/.rbenv/shims:$PATH
-
 export NVM_DIR="$HOME/.nvm"
+
+if [ $(uname) = Darwin ]; then
+    export MANPATH="/usr/local/opt/coreutils/libexec/gunman:$MANPATH"
+fi
