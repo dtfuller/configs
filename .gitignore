@@ -1,1 +1,8 @@
+# ignore vim pluggin log files.
 dotfiles/.vim/.netrwhist
+
+# ignore vim-generated files: 
+*~
+*.swa
+*.swo
+*.swp

@@ -1,3 +1,9 @@
+if [ -d ~/bin ]; then
+    PATH="~/bin:$PATH"
+fi
+
 if [ $(uname) = Darwin ]; then
     PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 fi
+
+export PATH;
