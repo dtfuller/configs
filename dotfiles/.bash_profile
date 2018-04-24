@@ -13,6 +13,12 @@ function script_path(){
     echo $DIR
 }
 
+# if shell is non-login, $USER might not be set. 
+if [ -n $USER ]; then
+    USER=$(whoami)
+    export USER
+fi;
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
