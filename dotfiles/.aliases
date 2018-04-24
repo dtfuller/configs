@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -13,7 +12,9 @@ alias g="git"
 alias s="git status"
 alias l="ls -a"
 alias d="docker"
+alias D="cd ~/Dev";
 alias p="docker ps -a"
+alias a=". $(script_path)".aliases
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
