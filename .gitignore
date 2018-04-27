@@ -6,3 +6,6 @@ dotfiles/.vim/.netrwhist
 *.swa
 *.swo
 *.swp
+
+# ignore the .extra bash pluggin: 
+dotfiles/.extra
