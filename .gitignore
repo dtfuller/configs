@@ -7,5 +7,5 @@ dotfiles/.vim/.netrwhist
 *.swo
 *.swp
 
-# ignore the .extra bash pluggin: 
+# ignore the .extra bash file: 
 dotfiles/.extra
