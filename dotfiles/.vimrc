@@ -23,6 +23,6 @@ set hlsearch                    " highlight search terms
 set incsearch                   " show search matches as you type
 set cursorline                  " highlight the current line (useful for quick orientation, but also slow to redraw
 " set list                        " use together with lcs to show invisible characters
-"set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_    " show 'invisible' characters
+" set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_    " show 'invisible' characters
 set ttyfast                     " optimize for fast terminal connections
 set clipboard=unnamed           " Use the OS clipboard by default (on versions compiled with '+clipboard')

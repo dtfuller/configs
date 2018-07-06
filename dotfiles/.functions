@@ -54,3 +54,7 @@ function ci() {
     git push 
 }
 
+function exited_containers(){
+    docker ps -a --format "table{{.ID}}\t{{.Names}}\t{{.Status}}" | head -n1
+    docker ps -a --format "table{{.ID}}\t{{.Names}}\t{{.Status}}" | grep -i 'exited'
+}
