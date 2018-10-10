@@ -1,0 +1,59 @@
+#!/bin/bash 
+# Run as root; minimal setup for a fresh system.
+
+function print_help() {
+    echo "";
+    echo "Usage:    ./setup_script {existing_username}";
+    echo "";
+}
+
+function install_dependencies() {
+    apt-get update;
+    apt-get install -y sudo vim git terminator wget openvpn;
+}
+
+function configure_sudoers(){
+    echo "";
+    # local username=$1;
+    # echo "" >> /etc/sudoers
+    # echo "# User privliege specification extension" >> /etc/sudoers
+    # echo "$username    ALL=(ALL:ALL) ALL" >> /etc/sudoers
+}
+
+function setup_user_wrapper(){
+    local username=$1;
+    export -f setup_user;
+    export username;
+
+    su -c "setup_user $username" $username
+}
+
+function setup_user(){
+    local username=$1;
+    local dotfiles="/home/$username/Conf/configs.git/dotfiles/"
+
+    cd /home/$username;
+        
+    # setup home directory
+    mkdir ./{Dev,Conf,Tools} &> /dev/null;
+    rm ./.bashrc ./.bash_profile ./.vimrc &> /dev/null;
+    
+    # setup bash and vim.
+    git clone https://github.com/dtfuller/configs.git ./Conf/configs.git;
+    ln -s "$dotfiles.bashrc" "/home/$username/.bashrc";
+    ln -s "$dotfiles.bash_profile" "/home/$username/.bash_profile";
+    ln -s "$dotfiles.vimrc" "/home/$username/.vimrc";
+    ln -s "$dotfiles.vim" "/home/$username/.vim";
+}
+
+function main() {
+    if [[ ( "$1" == "" ) || ( "$1" == "-h" ) || ( "$1" == "--help" ) ]]; then
+        print_help;
+    else
+        install_dependencies; 
+	configure_sudoers $1;
+        setup_user_wrapper $1;
+    fi
+}
+
+main $@
